@@ -1,5 +1,6 @@
 #include <iostream>
 #include <time.h>
+#include <Windows.h>
 
 using namespace std;
 
@@ -52,6 +53,7 @@ void show(int a[6][7]) {
 
 
 int main() {
+	SetConsoleOutputCP(1252);
 	srand(time(NULL));
 	int tab[6][7] = { 0 };
 	show(tab);
@@ -69,7 +71,9 @@ int main() {
 		cout << ", entrez un numéro de colonne (entre 1 et 7) : ";
 		cin >> colonne;
 		while (colonne < 1 || colonne >7) {
-			cout << "Mauvais numéro de colonne, réessayez : ";
+			system("cls");
+			show(tab);
+			cout << "Mauvais numéro de colonne, "<<(j1 ? "j1" : "j2")<<", réessayez : ";
 			cin >> colonne;
 		}
 		colonne--;
@@ -92,6 +96,7 @@ int main() {
 				break;
 			}
 			else if (i == 0) {
+				system("cls");
 				cout << "Colonne pleine !" << endl;
 			}
 		}
