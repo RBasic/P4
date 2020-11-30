@@ -9,6 +9,29 @@ void verifVictory(int tab[6][7], int ligne, int colonne, int joueur) {
 	//tab[ligne][colonne]
 	int compteur = 0;
 
+	for (int offset = -3; offset <= 3; offset++) {
+		int currentLine = ligne + offset;
+		int currentColumn = colonne + offset;
+		if ((currentLine < 0 || currentLine > 5) || (currentColumn < 0 || currentColumn > 6)) {
+			continue;
+		}
+		if (tab[currentLine][currentColumn] == joueur) {
+			compteur++;
+			if (compteur >= 4) {
+				// GAGNE
+				cout << "GAGNE" << endl;
+			}
+		}
+		else {
+			compteur = 0;
+		}
+	}
+
+
+
+
+
+
 	for (int j = ligne - 3; j <= ligne + 3; j++) {
 		if (j < 0 || j > 5) {
 			continue;
