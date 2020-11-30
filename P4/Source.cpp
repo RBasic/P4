@@ -1,6 +1,6 @@
 #include <iostream>
 #include <time.h>
-#include <Windows.h>
+//#include <Windows.h> FONCTIONNE QUE SUR VISUAL
 
 using namespace std;
 
@@ -15,6 +15,13 @@ void verifVictory(int tab[6][7], int ligne, int colonne, int joueur) {
 		else {
 			if (tab[ligne][j] == joueur) {
 				compteur++;
+				if (compteur >= 4) {
+					// GAGNE
+					cout << "GAGNE" << endl;
+				}
+			}
+			else {
+				compteur = 0;
 			}
 		}
 	}
@@ -53,7 +60,7 @@ void show(int a[6][7]) {
 
 
 int main() {
-	SetConsoleOutputCP(1252);
+	//SetConsoleOutputCP(1252); FONCTIONNE QUE SUR VISUAL
 	srand(time(NULL));
 	int tab[6][7] = { 0 };
 	show(tab);
@@ -71,8 +78,8 @@ int main() {
 		cout << ", entrez un numéro de colonne (entre 1 et 7) : ";
 		cin >> colonne;
 		while (colonne < 1 || colonne >7) {
-			system("cls");
-			show(tab);
+			//system("cls"); FONCTIONNE QUE SUR VISUAL
+			//show(tab);
 			cout << "Mauvais numéro de colonne, "<<(j1 ? "j1" : "j2")<<", réessayez : ";
 			cin >> colonne;
 		}
@@ -80,7 +87,7 @@ int main() {
 
 		for (int i = 5; i >= 0; i--) {
 			if (tab[i][colonne] == 0) {
-				system("cls");
+				//system("cls"); FONCTIONNE QUE SUR VISUAL
 				if (j1) {
 					tab[i][colonne] = 1;
 					cout << "Appel verifVictory : ";
@@ -96,7 +103,7 @@ int main() {
 				break;
 			}
 			else if (i == 0) {
-				system("cls");
+				//system("cls"); FONCTIONNE QUE SUR VISUAL
 				cout << "Colonne pleine !" << endl;
 			}
 		}
